@@ -1,0 +1,79 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(-90deg, #e73c7e, #23a6d5);
+	background-size: 100%,100%
+	animation: gradient 20s ease 10;
+	height: 100vh;
+  mid-width:500px;
+}
+
+h1
+{
+	position: relative;
+	margin-top: 10%;
+	text-align: center;
+	font-size: 5em;
+	color: white;
+	font-family: 'Lobster', cursive;
+}
+.piano {
+
+	height: 100vh;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.key {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	font-size: 1.2rem;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+.white {
+
+	width: 9%;
+	min-width: 30px;
+	height: 45%;
+	margin-top:2%;
+	background-color: white;
+	border: 1px solid black;
+	color: #000;
+
+	border-radius: 5%;
+	margin-bottom: 8%;
+}
+
+.black {
+	width: 8%;
+
+	border-radius: 5%;
+	margin-top:2%;
+	height: 29%;
+	margin-left: -4%;
+	margin-right: -4%;
+	z-index: 2;
+	background-color: black;
+	color: #fff;
+
+	margin-bottom: 8%;
+}
+
+
+.white.active {
+	background-color: yellow;
+	opacity: 40%;
+}
+
+.black.active {
+	opacity: 70%;
+}
