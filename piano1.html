@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Piano</title>
+</head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allison&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pianostyle.css">
+<h1> PIANO</h1>
+<body>
+    <div class="piano">
+
+        <div class="key white" data-note="B1">A</div>
+        <div class="key white" data-note="C">S</div>
+        <div class="key black" data-note="Cs">E</div>
+        <div class="key white" data-note="D">D</div>
+        <div class="key black" data-note="Ds">R</div>
+        <div class="key white" data-note="E">F</div>
+        <div class="key white" data-note="F">G</div>
+        <div class="key black" data-note="Fs">Y</div>
+        <div class="key white" data-note="G">H</div>
+        <div class="key black" data-note="Gs">U</div>
+        <div class="key white" data-note="A">J</div>
+        <div class="key black" data-note="Bb">I</div>
+        <div class="key white" data-note="B2">K</div>
+
+        <div class="key white" data-note="C2">L</div>
+    </div>
+    
+    <audio src="B3.mp3" id="B1"></audio>
+    <audio src="C4.mp3" id="C"></audio>
+    <audio src="Db4.mp3" id="Cs"></audio>
+
+    <audio src="D4.mp3" id="D"></audio>
+    <audio src="Eb4.mp3" id="Ds"></audio>
+    <audio src="E4.mp3" id="E"></audio>
+
+    <audio src="E4.mp3" id="Es"></audio>
+    <audio src="F4.mp3" id="F"></audio>
+    <audio src="Gb4.mp3" id="Fs"></audio>
+    
+    <audio src="G4.mp3" id="G"></audio>
+    <audio src="Ab4.mp3" id="Gs"></audio>
+    <audio src="A4.mp3" id="A"></audio>
+
+    <audio src="Bb4.mp3" id="Bb"></audio>
+    <audio src="B4.mp3" id="B2"></audio>
+
+    <audio src="C5.mp3" id="C2"></audio>
+
+    <script>
+        const keys = document.querySelectorAll('.key');
+        const regulars = document.querySelectorAll('.key.white');
+        const sharps = document.querySelectorAll('.key.black');
+        const whites = ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'];
+        const blacks = ['e', 'r', 'y', 'u', 'i']
+
+        keys.forEach(key => {
+            key.addEventListener('click', () => playNote(key))
+        })
+
+        document.addEventListener('keydown', e => {
+            if (e.repeat) return
+                const key = e.key
+            const whiteKeyIndex = whites.indexOf(key)
+            const blackKeyIndex = blacks.indexOf(key)
+
+            if (whiteKeyIndex > -1) playNote(regulars[whiteKeyIndex])
+                if (blackKeyIndex > -1) playNote(sharps[blackKeyIndex])
+            })
+
+        let playNote = (key) => {
+            const noteSound = document.getElementById(key.dataset.note)
+            noteSound.currentTime = 0
+            noteSound.play()
+            key.classList.add('active')
+            noteSound.addEventListener('ended', () => {
+                key.classList.remove('active')
+            })
+        }
+    </script>
+</body>
+
+</html>
